@@ -15,5 +15,5 @@ public protocol Reducer {
     associatedtype VOut: CustomStringConvertible
     
     init()
-    func reduce(key: KIn, values: AnyIterator<VIn>, ctx: ReducerContext<KOut, VOut>)
+    func reduce(key: KIn, values: AnyIterator<VIn>, ctx: Context<KOut, VOut>)
 }

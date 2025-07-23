@@ -17,6 +17,6 @@ public protocol Mapper {
     // serves like the setup() function in Java MapReduce
     init()
     // standard map() function in MapReduce
-    func map(key: String, value: String, ctx: MapperContext<KOut, VOut>)
+    func map(key: String, value: String, ctx: Context<KOut, VOut>)
 }
 
