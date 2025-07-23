@@ -2,7 +2,7 @@
 //  Reducer.swift
 //  SwiftStream
 //
-//  Created by Nikil Shyamsunder on 7/23/25.
+//  Copyright Nikil Shyamsunder 2025
 //
 
 import Foundation

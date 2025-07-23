@@ -2,7 +2,7 @@
 //  Context.swift
 //  SwiftStream
 //
-//  Created by Nikil Shyamsunder 2025
+//  Copyright Nikil Shyamsunder 2025
 //
 
 import Foundation
@@ -17,7 +17,8 @@ public class Context<KOut: CustomStringConvertible, VOut: CustomStringConvertibl
     private var counters: [String: [String: Int]] = [:]
     private var status: String = ""
     
-    public init(outputHandle: FileHandle){
+    // default to standard out
+    public init(outputHandle: FileHandle = .standardOutput){
         self.outputHandle = outputHandle
     }
     

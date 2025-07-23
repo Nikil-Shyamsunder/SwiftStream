@@ -2,7 +2,7 @@
 //  MapperContext.swift
 //  SwiftStream
 //
-//  Created by Nikil Shyamsunder 2025
+//  Copyright Nikil Shyamsunder 2025
 //
 
 import Foundation
