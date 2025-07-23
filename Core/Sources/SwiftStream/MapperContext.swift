@@ -1,5 +1,5 @@
 //
-//  MapperContext.swift
+//  Context.swift
 //  SwiftStream
 //
 //  Created by Nikil Shyamsunder 2025
@@ -7,8 +7,8 @@
 
 import Foundation
 
-// Genericize the MapperContext to any Key-Value pair, as long as they can be converted to strings
-public class MapperContext<KOut: CustomStringConvertible, VOut: CustomStringConvertible> {
+// Genericize the Context to any Key-Value pair, as long as they can be converted to strings
+public class Context<KOut: CustomStringConvertible, VOut: CustomStringConvertible> {
     // the file handle should be constant
     private let outputHandle: FileHandle
     
