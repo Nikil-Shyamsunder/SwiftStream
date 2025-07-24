@@ -5,6 +5,41 @@
 //  Copyright Nikil Shyamsunder 2025
 //
 
+import Foundation
+import SwiftStream
+
+// perform the clasic word count example!
+struct WordCountMapper: Mapper {
+    typealias KOut = String
+    typealias VOut = Int
+    
+    init() {}
+    
+    func map(key: String, value: String, ctx: Context<String, Int>) {
+        let words = value.lowercased()
+            .components(separatedBy: .whitespacesAndNewlines)
+            .filter { !$0.isEmpty }
+        
+        for word in words {
+            ctx.emit(word, 1)
+        }
+    }
+}
+
+struct WordCountReducer: Reducer {
+    typealias KIn = String
+    typealias VIn = Int
+    typealias KOut = String
+    typealias VOut = Int
+    
+    init() {}
+    
+    func reduce(key: String, values: AnyIterator<Int>, ctx: Context<String, Int>) {
+        let total = values.reduce(0, +)
+        ctx.emit(key, total)
+    }
+}
+ 
 @main
 struct SwiftStreamCLI {
     static func main() {

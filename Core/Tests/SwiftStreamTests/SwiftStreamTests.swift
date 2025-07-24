@@ -9,40 +9,39 @@ import Testing
 import XCTest
 @testable import SwiftStream
 
-
-final class WordCountTest: XCTestCase {
-    // perform the clasic word count example!
-    struct WordCountMapper: Mapper {
-        typealias KOut = String
-        typealias VOut = Int
-        
-        init() {}
-        
-        func map(key: String, value: String, ctx: Context<String, Int>) {
-            let words = value.lowercased()
-                .components(separatedBy: .whitespacesAndNewlines)
-                .filter { !$0.isEmpty }
-            
-            for word in words {
-                ctx.emit(word, 1)
-            }
-        }
-    }
-
-    struct WordCountReducer: Reducer {
-        typealias KIn = String
-        typealias VIn = Int
-        typealias KOut = String
-        typealias VOut = Int
-        
-        init() {}
-        
-        func reduce(key: String, values: AnyIterator<Int>, ctx: Context<String, Int>) {
-            let total = values.reduce(0, +)
-            ctx.emit(key, total)
-        }
-    }
+// perform the clasic word count example!
+public struct WordCountMapper: Mapper {
+    typealias KOut = String
+    typealias VOut = Int
     
+    init() {}
+    
+    func map(key: String, value: String, ctx: Context<String, Int>) {
+        let words = value.lowercased()
+            .components(separatedBy: .whitespacesAndNewlines)
+            .filter { !$0.isEmpty }
+        
+        for word in words {
+            ctx.emit(word, 1)
+        }
+    }
+}
+
+public struct WordCountReducer: Reducer {
+    typealias KIn = String
+    typealias VIn = Int
+    typealias KOut = String
+    typealias VOut = Int
+    
+    init() {}
+    
+    func reduce(key: String, values: AnyIterator<Int>, ctx: Context<String, Int>) {
+        let total = values.reduce(0, +)
+        ctx.emit(key, total)
+    }
+}
+
+final class WordCountTest: XCTestCase {    
     // test the mapper individually
     func testWordCountMapper() {
         let input = [
