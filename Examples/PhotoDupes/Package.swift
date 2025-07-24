@@ -5,20 +5,39 @@ import PackageDescription
 
 let package = Package(
     name: "PhotoDupes",
+    platforms: [
+        .macOS(.v13)
+    ],
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "PhotoDupes",
-            targets: ["PhotoDupes"]),
+            targets: ["PhotoDupes"]
+        ),
+        .executable(
+            name: "photodupes",
+            targets: ["PhotoDupesCLI"]
+        )
+    ],
+    dependencies: [
+        .package(path: "../../Core")
     ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "PhotoDupes"),
+            name: "PhotoDupes",
+            dependencies: [
+                .product(name: "SwiftStream", package: "Core")
+            ]
+        ),
+        .executableTarget(
+            name: "PhotoDupesCLI",
+            dependencies: [
+                "PhotoDupes",
+                .product(name: "SwiftStream", package: "Core")
+            ]
+        ),
         .testTarget(
             name: "PhotoDupesTests",
             dependencies: ["PhotoDupes"]
-        ),
+        )
     ]
 )

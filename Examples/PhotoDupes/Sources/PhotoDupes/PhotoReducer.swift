@@ -27,7 +27,7 @@ public struct PhotoReducer: Reducer {
         self.hammingThreshold = 4
     }
     
-    public func reduce(key: UInt16, values: AnyIterator<String>, ctx: ReducerContext<Int, String>) {
+    public func reduce(key: UInt16, values: AnyIterator<String>, ctx: Context<Int, String>) {
         // parse all of the values into a list of (file_path, full_hash)
         // log error if the format is incorrect
         let photos = Array(values).compactMap { line -> (String, UInt64)? in

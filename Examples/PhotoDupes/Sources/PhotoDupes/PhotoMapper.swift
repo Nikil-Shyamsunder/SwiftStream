@@ -16,7 +16,7 @@ public struct PhotoMapper: Mapper {
     
     // Calculates the hash from the file path
     // emits the prefix (top 16 bits of the hash) and the full hash
-    public func map(key: String, value: String, ctx: MapperContext<UInt16, String>) {
+    public func map(key: String, value: String, ctx: Context<UInt16, String>) {
         let filePath = value.trimmingCharacters(in: .whitespacesAndNewlines)
         let fileURL = URL(fileURLWithPath: filePath)
         
