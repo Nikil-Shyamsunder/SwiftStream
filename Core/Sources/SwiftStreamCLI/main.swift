@@ -55,7 +55,9 @@ struct SwiftStreamCLI {
                 throw CLIError.invalidMode("Mode must be 'map' or 'reduce'")
             }
         } catch {
-            fputs("Error: \(error)\n", stderr)
+            if let data = "Error: \(error)\n".data(using: .utf8) {
+                try? FileHandle.standardError.write(contentsOf: data)
+            }
             exit(1)
         }
     }
