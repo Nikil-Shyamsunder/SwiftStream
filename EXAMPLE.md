@@ -14,6 +14,12 @@ The WordCount example consists of:
 - Docker installed and running
 - Basic understanding of MapReduce concepts
 
+**Architecture:**
+- **Swift Version**: 6.1
+- **Hadoop Version**: 3.4.0
+- **Java Version**: OpenJDK 11
+- **Container OS**: Ubuntu 22.04 (Jammy)
+
 ## Quick Start
 
 ### 1. Build the Docker Image
@@ -194,33 +200,3 @@ docker run --rm swifthadoopstreaming bash -c "
 echo 'debug test' | /app/Examples/WordCount/.build/release/WordCountMapper 2>&1
 "
 ```
-
-## Technical Details
-
-### Architecture
-
-- **Swift Version**: 6.1
-- **Hadoop Version**: 3.4.0
-- **Java Version**: OpenJDK 11
-- **Container OS**: Ubuntu 22.04 (Jammy)
-
-### Performance Metrics
-
-The job reports custom counters:
-- `WordCount.lines_processed`: Number of input lines
-- `WordCount.words_processed`: Total words processed by mapper
-- `WordCount.words_reduced`: Unique words output by reducer
-
-### File Locations in Container
-
-- Swift executables: `/app/Examples/WordCount/.build/release/`
-- Hadoop installation: `/opt/hadoop`
-- Hadoop streaming JAR: `/opt/hadoop/share/hadoop/tools/lib/hadoop-streaming-*.jar`
-
-## Next Steps
-
-- Modify the WordCount logic for different use cases
-- Try with larger datasets
-- Experiment with different input formats
-- Scale to multi-node Hadoop clusters
-- Explore the PhotoDupes example for image processing
