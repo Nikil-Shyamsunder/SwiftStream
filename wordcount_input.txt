@@ -1,0 +1,7 @@
+hello world
+hello hadoop
+world of big data
+hadoop streaming example
+swift and hadoop
+big data processing
+hello swift world

@@ -1,0 +1,5 @@
+Hello world from Swift
+Swift is a great programming language
+MapReduce with Swift is powerful
+Hello Swift developers
+World of distributed computing with Swift
