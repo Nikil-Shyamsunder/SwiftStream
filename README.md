@@ -25,6 +25,9 @@ swiftstream/
 └── docs/                          # Additional documentation
 ```
 
+## End-to-End WordCount Example
+See [EXAMPLE.md](https://github.com/Nikil-Shyamsunder/SwiftStream/blob/main/EXAMPLE.md) for a full example of building the WordCount example in Swift, compiling it in Linux, and running it with Hadoop Streaming on a Docker image.
+
 ## Core Framework
 
 SwiftStream provides two main protocols that abstract MapReduce operations:
