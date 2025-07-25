@@ -1,4 +1,4 @@
-FROM swift:5.10-jammy
+FROM swift:6.1-jammy
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -25,14 +25,14 @@ WORKDIR /app
 
 COPY Core ./Core
 COPY Examples ./Examples
-COPY scripts ./scripts
 COPY docker/entrypoint.sh ./docker/entrypoint.sh
 
-RUN chmod +x ./docker/entrypoint.sh ./scripts/*.sh
+RUN chmod +x ./docker/entrypoint.sh
 
 RUN cd Core && swift build -c release
 RUN cd Examples/PhotoDupes && swift build -c release
+RUN cd Examples/WordCount && swift build -c release
 
-ENV PATH="/app/Core/.build/release:/app/Examples/PhotoDupes/.build/release:$PATH"
+ENV PATH="/app/Core/.build/release:/app/Examples/PhotoDupes/.build/release:/app/Examples/WordCount/.build/release:$PATH"
 
 ENTRYPOINT ["/app/docker/entrypoint.sh"]

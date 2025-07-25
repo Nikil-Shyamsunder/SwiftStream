@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "SwiftStream",
     platforms: [
-        .macOS(.v15)
+        .macOS(.v13)
     ],
     products: [
         .library(
